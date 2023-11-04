@@ -1,5 +1,6 @@
 ﻿using IntroduccionAEFCore.Entidades;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace IntroduccionAEFCore
 {
@@ -12,11 +13,21 @@ namespace IntroduccionAEFCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<Genero>().HasKey(g => g.Id);
-            modelBuilder.Entity<Genero>().Property(g => g.Nombre).HasMaxLength(150);
+            //modelBuilder.Entity<Genero>().HasKey(g => g.Id);
+            //modelBuilder.Entity<Genero>().Property(g => g.Nombre).HasMaxLength(150);
+
+        }
+
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            configurationBuilder.Properties<string>().HaveMaxLength(150);
         }
 
         public DbSet<Genero> Generos => Set<Genero>();
+        public DbSet<Actor> Actores => Set<Actor>();
+        public DbSet<Pelicula> Peliculas => Set<Pelicula>();
+        public DbSet<Comentarios> Comentarios => Set<Comentarios>();
     }
 }
