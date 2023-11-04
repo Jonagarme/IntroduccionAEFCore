@@ -4,6 +4,7 @@ using IntroduccionAEFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IntroduccionAEFCore.Migrations
 {
     [DbContext(typeof(ApplicactionDBContext))]
-    partial class ApplicactionDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231104231208_RelacionPeliculasActores")]
+    partial class RelacionPeliculasActores
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

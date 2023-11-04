@@ -8,5 +8,6 @@
         public DateTime FechaEstreno { get; set; }
         public HashSet<Comentarios> Comentarios { get; set; } = new HashSet<Comentarios>();
         public HashSet<Genero> Generos { get; set; } = new HashSet<Genero>();
+        public List<PeliculaActor> PeliculaActores { get; set; } = new List<PeliculaActor>();
     }
 }

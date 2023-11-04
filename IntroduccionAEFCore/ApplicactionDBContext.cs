@@ -28,6 +28,7 @@ namespace IntroduccionAEFCore
         public DbSet<Genero> Generos => Set<Genero>();
         public DbSet<Actor> Actores => Set<Actor>();
         public DbSet<Pelicula> Peliculas => Set<Pelicula>();
-        public DbSet<Comentarios> Comentarios => Set<Comentarios>();
+        public DbSet<Comentarios> Comentarios => Set<Comentarios>(); 
+        public DbSet<PeliculaActor> PeliculasActores => Set<PeliculaActor>();
     }
 }
