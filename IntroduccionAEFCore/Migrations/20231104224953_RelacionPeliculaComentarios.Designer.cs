@@ -4,6 +4,7 @@ using IntroduccionAEFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IntroduccionAEFCore.Migrations
 {
     [DbContext(typeof(ApplicactionDBContext))]
-    partial class ApplicactionDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231104224953_RelacionPeliculaComentarios")]
+    partial class RelacionPeliculaComentarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace IntroduccionAEFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("GeneroPelicula", b =>
-                {
-                    b.Property<int>("GenerosId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PeliculasId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GenerosId", "PeliculasId");
-
-                    b.HasIndex("PeliculasId");
-
-                    b.ToTable("GeneroPelicula");
-                });
 
             modelBuilder.Entity("IntroduccionAEFCore.Entidades.Actor", b =>
                 {
@@ -127,21 +115,6 @@ namespace IntroduccionAEFCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Peliculas");
-                });
-
-            modelBuilder.Entity("GeneroPelicula", b =>
-                {
-                    b.HasOne("IntroduccionAEFCore.Entidades.Genero", null)
-                        .WithMany()
-                        .HasForeignKey("GenerosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("IntroduccionAEFCore.Entidades.Pelicula", null)
-                        .WithMany()
-                        .HasForeignKey("PeliculasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("IntroduccionAEFCore.Entidades.Comentarios", b =>
