@@ -9,6 +9,7 @@ namespace IntroduccionAEFCore.Utilidades
         public AutoMapperProfiles()
         {
             CreateMap<GeneroCreacionDTO, Genero>();
+            CreateMap<ActorCreacionDTO, Actor>();
         }
     }
 }
